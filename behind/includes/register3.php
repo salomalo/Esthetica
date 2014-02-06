@@ -102,7 +102,7 @@ $token = Token::generate();
 					<div id="genderGroup" class="form-group">
                     <label for="inputGender" class="col-lg-3 col-lg-offset-1 control-label">Sexe</label>
                         <div class="col-lg-3">
-							<p class="form-control-static"><?php echo (Session::get('inputGender') == 1 ? 'Homme <img src="images/male.png" alt="Homme" />' : 'Femme <img src="images/female.png" alt="Femme" />'); ?> <a class="small" href="index.php?action=register2&inputFirstName=<?php echo escape(Session::get('inputFirstName')); ?>&inputLastName=<?php echo escape(Session::get('inputLastName')); ?>&inputEmail=<?php echo escape(Session::get('inputEmail')); ?>&inputGender=<?php echo escape(Session::get('inputGender')); ?>&token=<?php echo $token; ?>">modifier</a></p>
+							<p class="form-control-static"><?php echo (Session::get('inputGender') == 1 ? 'Homme <i class="fa fa-male fa-fw"></i>' : 'Femme <i class="fa fa-female fa-fw"></i>'); ?> <a class="small" href="index.php?action=register2&inputFirstName=<?php echo escape(Session::get('inputFirstName')); ?>&inputLastName=<?php echo escape(Session::get('inputLastName')); ?>&inputEmail=<?php echo escape(Session::get('inputEmail')); ?>&inputGender=<?php echo escape(Session::get('inputGender')); ?>&token=<?php echo $token; ?>">modifier</a></p>
                         </div>
                     </div>
 					<div id="firstNameGroup" class="form-group">

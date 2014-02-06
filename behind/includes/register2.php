@@ -115,13 +115,13 @@ $token = Token::generate();
 							<div class="radio">
 							<label>
 								<input type="radio" name="inputGender" id="maleRadio" value="1"<?php echo $male; ?>>
-								Homme <img src="images/male.png" alt="Homme" />
+								Homme <i class="fa fa-male fa-fw"></i>
 							</label>
 							</div>
 							<div class="radio">
 							<label>
 								<input type="radio" name="inputGender" id="femaleRadio" value="2"<?php echo $female; ?>>
-								Femme <img src="images/female.png" alt="Femme" />
+								Femme <i class="fa fa-female fa-fw"></i>
 							</label>
 							</div>
                         </div>

@@ -63,7 +63,7 @@ else {
 					<div id="genderGroup" class="form-group">
                     <label for="inputGender" class="col-lg-3 col-lg-offset-1 control-label">Sexe</label>
                         <div class="col-lg-3">
-							<p class="form-control-static"><?php echo (Session::get('inputGender') == 1 ? 'Homme <img src="images/male.png" alt="Homme" />' : 'Femme <img src="images/female.png" alt="Femme" />'); ?></p>
+							<p class="form-control-static"><?php echo (Session::get('inputGender') == 1 ? 'Homme <i class="fa fa-male fa-fw"></i>' : 'Femme <i class="fa fa-female fa-fw"></i>'); ?></p>
                         </div>
                     </div>
 					<div id="firstNameGroup" class="form-group">
