@@ -67,7 +67,7 @@ $invoicesCount = $invoices->data()->count();
 							</thead>
 							<tbody>
 								<?php
-								if($invoices->data()->count() == 0) {
+								if(!$invoices->exists()) {
 									echo '
 								<tr>
 									<td colspan="5">Aucune facture dans votre compte.</td>
