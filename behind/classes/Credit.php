@@ -54,4 +54,13 @@ class Credit {
 	public function data() {
 		return $this->_data;
 	}
+	
+	public static function total($credit) {
+		$data = unserialize($credit->data);
+		$total = 0;
+		foreach($data as $line) {
+			$total += $line['qty']*$line['amount'];
+		}
+		return $total;
+	}
 }
