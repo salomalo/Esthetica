@@ -18,6 +18,7 @@ $actions = array(
 	'rendezvous' => 'rendezvous.php',
 	'invoice' => 'invoice.php',
 	'invoices' => 'invoices.php',
+	'credits' => 'credits.php',
 	'services' => 'services.php',
 	'apropos' => 'apropos.php',
 	'facebookCreate' => 'facebookCreate.php',
