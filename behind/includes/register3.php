@@ -79,7 +79,7 @@ $token = Token::generate();
 					<li>Étape 4</li>
 				</ol>
 				<div class="progress progress-striped active">
-					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
+					<div class="progress-bar progress-bar-default" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">
 						<span class="sr-only">75% complété</span>
 					</div>
 				</div>
