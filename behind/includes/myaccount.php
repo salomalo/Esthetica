@@ -140,8 +140,8 @@ if($credits->exists()) {
 											</tr>
 										</table>
 										<h4>Votre code client:</h4>
-										<p class="text-center small" style="font-weight:bold;margin-bottom:0px;"><?php printf("CPOT-%1$06d", $user->data()->id); ?></p>
-										<p><img src="http://www.barcodesinc.com/generator/image.php?code=<?php printf("CPOT-%1$06d", $user->data()->id); ?>%20&style=68&type=C128B&width=200&height=75&xres=1&font=3" class="img-responsive center-block" /></p>
+										<p class="small">Faites scanner ce code pour faciliter l'accès à votre compte.</p>
+										<p><img src="http://www.barcodesinc.com/generator/image.php?code=<?php echo $user->data()->phone; ?>%20&style=68&type=C128B&width=200&height=75&xres=1&font=3" class="img-responsive center-block" /></p>
 									</div>
 								</div>	
 							</div>
