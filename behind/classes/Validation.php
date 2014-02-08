@@ -30,7 +30,7 @@ class Validation {
 						break;
 						case 'matches':
 							if($value != $source[$ruleValue]) {
-								$this->addError(array('group' => $rules['group'], 'message' => 'Le champ <strong>' . $rules['fieldName'] . '</strong> doit correspondre au champ <strong>' . $items[$ruleValue]['fieldName'] . '.'));
+								$this->addError(array('group' => $rules['group'], 'message' => 'Le champ <strong>' . $rules['fieldName'] . '</strong> doit correspondre au champ <strong>' . $items[$ruleValue]['fieldName'] . '</strong>.'));
 							}
 						break;
 						case 'unique':

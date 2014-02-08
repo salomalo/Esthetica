@@ -36,6 +36,10 @@ class User {
 		return $userId;
 	}
 	
+	public function update($fields = array()) {
+		return $this->_db->update('users', $fields, array('id', '=', $this->_data->id));;
+	}
+	
 	public function find($user = null) {
 		if($user) {
 			$field = (is_numeric($user)) ? 'id' : 'username';
