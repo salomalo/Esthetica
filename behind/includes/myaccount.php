@@ -24,6 +24,20 @@ $invoices = new Invoice();
 $invoices->findAll($user->data()->id);
 
 $invoicesCount = $invoices->data()->count();
+$credits = new Credit();
+$credits->findAll($user->data()->id);
+
+$creditsTotal = 0.00;
+$creditsTextClass = "";
+
+if($credits->exists()) {
+	foreach($credits->data() as $credit) {
+		$creditsTotal += Credit::total($credit);
+	}
+	if($recitsTotal > 0) {
+		$creditsTextClass = "text-success";	
+	}
+}
 
 ?>
 			<script type="text/javascript">
@@ -114,7 +128,7 @@ $invoicesCount = $invoices->data()->count();
 											</tr>
 											<tr>
 												<th align="right" valign="top" scope="row"><span class="glyphicon glyphicon-usd"></span> Balance crédits:</th>
-												<td align="left" valign="top"><span class="text-success">$0.50 CAD</span></td>
+												<td align="left" valign="top"><span class="<?php echo $creditsTextClass; ?>">$<?php echo substr(money_format("%i", $creditsTotal), 0, -4); ?> disponible</span></td>
 											</tr>
 											<tr>
 												<th align="right" valign="top" scope="row"><span class="glyphicon glyphicon-eye-open"></span> Esthéticien(ne):</th>
