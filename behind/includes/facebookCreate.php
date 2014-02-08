@@ -125,6 +125,7 @@ else {
 }
 
 ?>
+
 		<script type="text/javascript">
 		$(document).ready(function(e) {
 			$(document).attr('title', 'Inscription via Facebook - Pose d\'ongles Trycia');
