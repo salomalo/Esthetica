@@ -2,8 +2,7 @@
         <div class="footer">
         	<p><?php
 
-if($copyright_show) { echo 'Copyright © Ongles Trycia inc. 2013-' . date("Y") . ' &mdash; Tous droits réservés. 
-Créé avec l\'utilisation de <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap 3</a>. Thème par <a href="http://bootswatch.com/" target="_blank">Bootswatch</a>.'; }
+if($copyright_show) { echo 'Copyright © Ongles Trycia inc. 2013-' . date("Y") . ' &mdash; Tous droits réservés.'; }
 if($dev) { echo '<div class="panel panel-info center-block text-center" style="width: 75%;">
   <div class="panel-heading">License de développement</div>
   <div class="panel-body">
