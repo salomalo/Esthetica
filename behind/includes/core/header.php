@@ -40,7 +40,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script>var __adobewebfontsappname__="dreamweaver"</script>
-	<script src="http://use.edgefonts.net/sansita-one:n4:default;sail:n4:default.js" type="text/javascript"></script>
+	<script src="http://use.edgefonts.net/sail:n4:default.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="container">

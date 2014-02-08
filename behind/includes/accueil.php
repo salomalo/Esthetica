@@ -24,20 +24,20 @@ if(Session::exists('flash')) {
 ?>
 <div class="jumbotron">
             <h1>Parrainage</h1>
-            <p class="lead">Lorsque vous référez nos services à vos amis, nous nous assurons de vous offrir un cadeau à utiliser chez Ongles Trycia. Vous aurez droit à une carte cadeau de 25$ en référant un nouveau client.</p>
-            <p><small>Le crédit sous forme de "carte cadeau" est en fait un crédit appliqué à votre compte client, et peut être vérifié en ligne en vous connectant à votre compte.</small></p>
-            <p><a class="btn btn-lg btn-success" href="index.php?action=myaccount" role="button"><span class="glyphicon glyphicon-gift"></span> Prendre rendez-vous!</a></p>
+            <p class="lead">Lorsque vous référez nos services à vos amis, nous nous assurons de vous offrir un cadeau à utiliser chez Ongles Trycia. Vous aurez droit à une note de crédit de 25$<sup>*</sup> en référant un nouveau client.</p>
+            <p><small>* Note de crédit appliquée au compte.</small></p>
+            <p><a class="btn btn-lg btn-success" href="index.php?action=myaccount" role="button"><span class="glyphicon glyphicon-gift"></span> Prendre votre rendez-vous</a></p>
         </div>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-xs-4">
                 <h2>Service courtois</h2>
                 <p>Chez Trycia, nous nous sommes donné comme mission de prioriser le service au client, vous. Vous pouvez nous faire confiance puisque vous êtes la raison pour laquelle nous existons.</p>
                 	</div>
-            <div class="col-lg-4">
+            <div class="col-xs-4">
                 <h2>Garantie</h2>
                 <p>Si un problème survient avec vos ongles, nous nous engagons à vous les réparer sans aucun frais additionnel et ce, pendant toute la durée de vie normale du produit.</p>
             </div>
-            <div class="col-lg-4">
+            <div class="col-xs-4">
                 <h2>Produits de qualité</h2>
                 <p>Tous nos produits sont faits d'éléments de qualité. Nous ne voulons pas de basse qualité pour nous &mdash; vous aurez de la haute qualité aussi.</p>
             </div>
