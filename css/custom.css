@@ -16,7 +16,7 @@ body {
 	font-size: 21px;
 	padding: 14px 24px;
 }
-.container .row .col-xs-4 h2 {
+.container .row .col-md-4 h2 {
 	font-style: normal;
 	font-weight: bold;
 }
