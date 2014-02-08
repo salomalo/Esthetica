@@ -78,6 +78,10 @@ span.menu-text {
 #legend tr:nth-child(2) td {
 	width: 33.333333333%;
 }
+table.stats {
+	margin-top: 20px;
+	width: 100%;
+}
 @media print {
 	#navigation,#logo,.footer,#pageTitle {
 		display: none;
