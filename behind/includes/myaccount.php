@@ -72,15 +72,19 @@ if($credits->exists()) {
 									<h3 class="panel-title">MES DÉTAILS</h3>
 									</div>
 									<div class="panel-body">
-										<img src="<?php echo $imageURL; ?>" class="img-thumbnail pull-right" style="height: 54px; width: 54px;" />
+										<?php if($user->data()->facebook_id) { ?>
+										<img src="<?php echo $imageURL; ?>" class="img-thumbnail pull-right" style="height: 60px; width: 60px; position: absolute; top: 50px; right: 25px;" />
+										<?php } ?>
 										<h3 class="name"><?php echo ($user->data()->gender == 1 ? '<i class="fa fa-lg fa-male"></i>' : '<i class="fa fa-lg fa-female"></i>'); ?> <?php echo escape($user->data()->firstName) . ' ' . escape($user->data()->lastName); ?></h3>
-										<table border="0" class="stats" style="margin-top: 20px;">
-											<?php
-											echo ($user->data()->facebook_id != NULL) ? '<tr>
+										<table border="0" class="stats" style="margin-top: 10px;">
+											<tr>
 												<th align="right" valign="top" scope="row"><span class="glyphicon glyphicon-link"></span> Connexion:</th>
-												<td align="left" valign="top"><i class="fa fa-facebook fa-fw"></i> Facebook</td>
-											</tr>' : '';
+											<?php
+											echo ($user->data()->facebook_id != NULL) ? '
+												<td align="left" valign="top"><i class="fa fa-facebook-square"></i> Facebook</td>
+' : '<td align="left" valign="top"><i class="fa fa-asterisk"></i> Mot de passe</td>';
 											?>
+											</tr>
 											<tr>
 												<th align="right" valign="top" scope="row"><span class="glyphicon glyphicon-earphone"></span> Téléphone:</th>
 												<td align="left" valign="top"><?php echo escape(preg_replace("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/", "($1) $2-$3", $user->data()->phone)); ?></td>

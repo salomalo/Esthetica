@@ -31,7 +31,7 @@ $Licensing = new Licensing();
 
 $Licensing->whmcsurl = "http://whmcs.godevz.com/";
 $Licensing->secret_key = "f704d329d0j4728f9n5y4ri2cn748392nd7894nd789423n7d89n438729dn4892nf7894298gfn74238f4";
-$Licensing->license_key = "M7TRS-DEVb123a72ace96";
+$Licensing->license_key = "M7TRS-3153a977c6fc927";
 if(Input::get('clear_license') == "y")
 	$Licensing->local_key = '';
 else
@@ -46,6 +46,8 @@ if ($results["status"] == "Active") {
     }
 } 
 elseif ($results["status"] == "Invalid") {
+	$copyright_show = true;
+	$dev = 0;
 	file_put_contents("license.txt", "");
     include('behind/includes/core/header.php');
 	echo '
@@ -58,8 +60,11 @@ elseif ($results["status"] == "Invalid") {
 		</div>
 	</div>';
 	include('behind/includes/core/footer.php');
+	die();
 } 
 else if ($results["status"] == "Expired") {
+	$copyright_show = true;
+	$dev = 0;
 	file_put_contents("license.txt", "");
     include('behind/includes/core/header.php');
 	echo '
@@ -72,8 +77,11 @@ else if ($results["status"] == "Expired") {
 		</div>
 	</div>';
 	include('behind/includes/core/footer.php');
+	die();
 } 
 else if ($results["status"] == "Suspended") {
+	$copyright_show = true;
+	$dev = 0;
 	file_put_contents("license.txt", "");
     include('behind/includes/core/header.php');
 	echo '
@@ -86,6 +94,7 @@ else if ($results["status"] == "Suspended") {
 		</div>
 	</div>';
 	include('behind/includes/core/footer.php');
+	die();
 }
 
 $dev = preg_match("(M7TRS-DEV\w{12})", $Licensing->license_key);

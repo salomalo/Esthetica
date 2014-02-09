@@ -14,8 +14,18 @@ if(Input::exists()) {
 		$validation->check($_POST, array(
 			'inputCheck' => array(
 				'required' => true,
-				'fieldName' => 'Confirmation',
+				'fieldName' => 'Confirmation #1',
 				'group' => 'checkGroup'
+			),
+			'inputCheck2' => array(
+				'required' => true,
+				'fieldName' => 'Confirmation #2',
+				'group' => 'checkGroup2'
+			),
+			'inputCheck3' => array(
+				'required' => true,
+				'fieldName' => 'Confirmation #3',
+				'group' => 'checkGroup3'
 			)
 		));
 		
@@ -73,23 +83,41 @@ $token = Token::generate();
 					<h3>Désactivation du compte</h3>
 					<?php echo (empty($errors)) ? '' : $errors; ?>
 					<form class="form-horizontal" role="form" action="index.php?action=deactivate" method="post">
+						<h4>Confirmation</h4>
 						<div id="userGroup" class="form-group">
-							<div class="col-md-offset-4 col-md-8">
-								<span class="help-block text-danger"><strong>Vous allez désactiver votre compte.</strong> Votre compte n'apparaitera plus dans nos listes de clients. Vous pouvez le réactiver en TOUT temps en vous reconnectant à votre compte.</span>
+							<div class="col-md-offset-2 col-md-10">
+								<span class="help-block"><strong class="text-danger">Vous allez désactiver votre compte.</strong> Votre compte n'apparaitera plus dans nos listes de clients en salon. Nous ne vous contacterons plus par courriel. Vous pouvez réactiver votre compte en vous connectant à nouveau de la même façon.</span>
 							</div>
 						</div>
-						<div id="confirmationGroup" class="form-group">
-							<label for="inputPhoneNumber" class="col-md-3 col-md-offset-1 control-label">Confirmation:</label>
-							<div class="col-md-8">
-								<div class="checkbox text-danger">
+						<div id="checkGroup" class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<div class="checkbox">
 									<label>
 										<input name="inputCheck" type="checkbox"> Je veux désactiver mon compte.
 									</label>
 								</div>
 							</div>
 						</div>
+						<div id="checkGroup2" class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<div class="checkbox">
+									<label>
+										<input name="inputCheck2" type="checkbox"> Je comprends comment réactiver mon compte.
+									</label>
+								</div>
+							</div>
+						</div>
+						<div id="checkGroup3" class="form-group">
+							<div class="col-md-offset-2 col-md-10">
+								<div class="checkbox">
+									<label>
+										<input name="inputCheck3" type="checkbox"> Je vais être déconnecté de mon compte.
+									</label>
+								</div>
+							</div>
+						</div>
 						<div class="form-group">
-							<div class="col-md-offset-4 col-md-8">
+							<div class="col-md-offset-2 col-md-10">
 								<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-ban-circle"></span> Désactiver</button>
 							</div>
 						</div>
