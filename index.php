@@ -16,6 +16,7 @@ $actions = array(
 	'register4' => 'register4.php',
 	'myaccount' => 'myaccount.php',
 	'update' => 'update.php',
+	'deactivate' => 'deactivate.php',
 	'rendezvous' => 'rendezvous.php',
 	'invoice' => 'invoice.php',
 	'invoices' => 'invoices.php',
