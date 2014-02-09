@@ -15,11 +15,34 @@ if($user_id) {
 	// If not, we'll get an exception, which we handle below.
 	try {
 		$check = new User(-1);
-		echo $check->findFacebook($user_id);
+		$check->findFacebook($user_id);
 		if($check->exists()) {
-			$check->login();
-			Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Bienvenue ' . $check->data()->firstName . ', vous vous êtes connecté à votre compte avec succès.'));
-			Redirect::to('accueil');
+			if($check->data()->status === "Banni") {
+				Session::flash('flash', array('status' => 'error', 'message' => '<strong>Erreur!</strong> Votre compte a été banni. Veuillez nous contacter pour plus d\'informations.'));
+				Redirect::to('accueil');
+			}
+			$user_profile = $facebook->api('/me?fields=first_name,last_name,email,gender','GET');
+			$fields['firstName'] = $user_profile['first_name'];
+			$fields['lastName'] = $user_profile['last_name'];
+			$fields['email'] = @$user_profile['email'];
+			if($user_profile['gender'] === 'male') {
+				$gender = 1;
+			}
+			else if($user_profile['gender'] === 'female') {
+				$gender = 2;
+			}
+			$fields['gender'] = $gender;
+			$check->update($fields);
+			$login = $check->login();
+			if($login) {				
+				$check->update(array('status' => 'Actif'));
+				if(Input::get('fromUpdate') == 1) {				
+					Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Votre compte a bel et bien été resynchronisé!'));
+					Redirect::to('update');
+				}
+				Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Bienvenue ' . $fields['firstName'] . ', vous vous êtes connecté à votre compte avec succès. <a href="index.php?action=myaccount" class="alert-link">Voir mon compte.</a>'));
+				Redirect::to('accueil');
+			}
 		}
 		else {
 			Redirect::to('facebookCreate');

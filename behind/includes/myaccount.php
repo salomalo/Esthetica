@@ -23,7 +23,10 @@ else {
 $invoices = new Invoice();
 $invoices->findAll($user->data()->id);
 
-$invoicesCount = $invoices->data()->count();
+$invoicesCount = 0;
+if($invoices->exists()) {
+	$invoicesCount = $invoices->data()->count();
+}
 $credits = new Credit();
 $credits->findAll($user->data()->id);
 
@@ -111,7 +114,7 @@ if($credits->exists()) {
 											</tr>
 										</table>
 										<a class="btn btn-primary btn-block" style="margin-top: 10px;" href="index.php?action=update"><span class="glyphicon glyphicon-edit"></span> Modifier</a>
-										<a class="btn btn-danger btn-block" style="margin-top: 5px;" href="index.php?action=update"><span class="glyphicon glyphicon-ban-circle"></span> Désactiver mon compte</a>
+										<a class="btn btn-danger btn-block" style="margin-top: 5px;" href="index.php?action=deactivate"><span class="glyphicon glyphicon-ban-circle"></span> Désactiver mon compte</a>
 									</div>
 								</div>
 							</div>
@@ -140,8 +143,8 @@ if($credits->exists()) {
 											</tr>
 										</table>
 										<h4>Votre code client:</h4>
-										<p class="small">Faites scanner ce code pour faciliter l'accès à votre compte.</p>
-										<p><img src="http://www.barcodesinc.com/generator/image.php?code=<?php echo $user->data()->phone; ?>%20&style=68&type=C128B&width=200&height=75&xres=1&font=3" class="img-responsive center-block" /></p>
+										<p class="small" style="margin: 0 0 -1.5px;">Faites scanner ce code pour faciliter l'accès à votre compte.</p>
+										<p style="margin: 0 0 -1.5px;"><img src="http://www.barcodesinc.com/generator/image.php?code=<?php echo $user->data()->phone; ?>%20&style=68&type=C128B&width=200&height=75&xres=1&font=3" class="img-responsive center-block" /></p>
 									</div>
 								</div>	
 							</div>

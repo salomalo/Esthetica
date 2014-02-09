@@ -15,6 +15,9 @@ class User {
 				$user = Session::get(self::$_sessionName);
 				
 				if($this->find($user)) {
+					if($this->data()->status === "Banni") {
+						return false;
+					}
 					$this->_isLoggedIn = true;
 				}
 				else {
@@ -87,6 +90,9 @@ class User {
 			$user = $this->find($username);
 			
 			if($user) {
+				if($this->data()->status === "Banni") {
+					return false;
+				}
 				if($this->data()->password === Hash::make($password, $this->data()->salt)) {
 					Session::put(self::$_sessionName, $this->data()->id);
 					$this->_isLoggedIn = true;
@@ -124,6 +130,8 @@ class User {
 		
 		Session::delete(self::$_sessionName);
 		Cookie::delete($this->_cookieName);
+		
+		Redirect::to('accueil');
 	}
 	
 	public function data() {

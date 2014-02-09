@@ -9,16 +9,37 @@ body {
 	padding-bottom: 20px;
 	clear: both;
 }
+@media (min-width: 550px) {
+	.jumbotron {
+		border-bottom-left-radius: 50% !important;
+		border-bottom-right-radius: 50% !important;
+	}
+}
 .jumbotron {
 	text-align: center;
 }
-.jumbotron .btn {
+.jumbotron .hidden-xs.hidden-sm .btn   {
 	font-size: 21px;
 	padding: 14px 24px;
 }
+.container .row .col-md-4 div.circle {
+	background-color: #E6E6E6;
+	border-radius: 50%;
+    behavior: url(PIE.htc);
+	font-size: 60px;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	margin-bottom: 0px;
+}
+.container .row .col-md-4 div.circle .glyphicon {
+	line-height: 100px;
+}
 .container .row .col-md-4 h2 {
+	margin-top: 10px;
 	font-style: normal;
 	font-weight: bold;
+	text-align: center;
 }
 .container .jumbotron h1 {
 	font-style: normal;
@@ -79,6 +100,17 @@ span.menu-text {
 table.stats {
 	margin-top: 20px;
 	width: 100%;
+}
+div .navbar.navbar-default {
+	margin-bottom: 0;
+}
+.dropdown-menu > li > a {
+	padding: 5px 20px;
+}
+@media (max-width: 767px) {
+	.navbar-nav .open .dropdown-menu > li > a {
+		padding: 10px 15px 10px 25px;
+	}
 }
 @media print {
 	#navigation,#logo,.footer,#pageTitle {

@@ -45,7 +45,10 @@ echo '</pre';*/
 $invoices = new Invoice();
 $invoices->findAll($user->data()->id);
 
-$invoicesCount = $invoices->data()->count();
+$invoicesCount = 0;
+if($invoices->exists()) {
+	$invoicesCount = $invoices->data()->count();
+}
 ?>
 
 		<script type="text/javascript">

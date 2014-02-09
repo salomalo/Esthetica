@@ -18,7 +18,8 @@ if(Input::exists()) {
 			$login = $user->login(Input::get('inputUserName'), Input::get('inputPassword'), $remember);
 			
 			if($login) {
-				Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Bienvenue ' . $user->data()->firstName . ', vous vous êtes connecté à votre compte avec succès.'));
+				$user->update(array('status' => 'Actif'));
+				Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Bienvenue ' . $user->data()->firstName . ', vous vous êtes connecté à votre compte avec succès. <a href="index.php?action=myaccount" class="alert-link">Voir mon compte.</a>'));
 				Redirect::to('accueil');
 			}
 			else {
@@ -45,25 +46,25 @@ if(Input::exists()) {
 		});
 		</script>
         <div class="row">
-        	<div class="col-lg-offset-1 col-lg-5">            
+        	<div class="col-md-offset-1 col-md-5">            
             	<h1>Connexion</h1>
                 <p>Utilisez vos informations personnelles pour vous connecter à votre compte.</p>
 				<?php echo (empty($errors)) ? '' : $errors; ?>
             	<form class="form-horizontal" action="index.php?action=login" method="post" role="form">
                     <div class="form-group" id="groupUserName">
-                    <label for="inputUserName" class="col-sm-4 control-label">Nom d'utilisateur</label>
-                        <div class="col-sm-8">
+                    <label for="inputUserName" class="col-md-4 control-label">Nom d'utilisateur</label>
+                        <div class="col-md-8">
                             <input type="text" class="form-control" name="inputUserName" placeholder="Nom d'utilisateur" value="<?php echo escape(Input::get('inputUserName')); ?>">
                         </div>
                     </div>
                     <div class="form-group" id="groupPassword">
-                        <label for="inputPassword" class="col-sm-4 control-label">Mot de passe</label>
-                        <div class="col-sm-8">
+                        <label for="inputPassword" class="col-md-4 control-label">Mot de passe</label>
+                        <div class="col-md-8">
                             <input type="password" class="form-control" name="inputPassword" placeholder="Mot de passe">
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-md-offset-4 col-md-5">
                             <div class="checkbox">
                                 <label>
                                     <input name="remember" type="checkbox"> Se souvenir de moi
@@ -72,7 +73,7 @@ if(Input::exists()) {
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-md-offset-1 col-md-11 center-block text-center">
 							<input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
                             <button type="submit" class="btn btn-primary">Connexion</button> ou 
 							<a class="btn btn-facebook" href="index.php?action=facebookLogin"><i class="fa fa-facebook"></i> | Se connecter</a>
@@ -80,21 +81,22 @@ if(Input::exists()) {
                     </div>
             	</form>
             </div>
-			<div class="col-lg-5">
-			<h1>Inscription</h1>
-			<p>Créez un compte à l'aide de vos informations personnelles et ainsi bénéficier des avantages suivants:</p>
-			<ul>
-				<li>Gérer vos rendez-vous en ligne</li>
-				<li>Visionner les détails de vos factures</li>
-				<li>Voir le solde de votre compte
-					<ul>
-						<li>Acheter des cartes cadeau</li>
-						<li>Voir vos crédits de parrainage</li>
-					</ul>
-				</li>
-			</ul>
-			<p><a href="index.php?action=register" class="btn btn-primary btn-lg" role="button">Commencer »</a> ou 
-			<a class="btn btn-facebook" href="index.php?action=facebookCreate"><i class="fa fa-facebook"></i> | S'enregistrer</a></p>
+			<div class="col-md-5">
+				<h1>Inscription</h1>
+				<p>Créez un compte à l'aide de vos informations personnelles et ainsi bénéficier des avantages suivants:</p>
+				<ul>
+					<li>Gérer vos rendez-vous <em>en ligne</em></li>
+					<li>Visionner les détails de vos factures</li>
+					<li>Voir le solde de votre compte
+						<ul>
+							<li>Acheter des cartes cadeau</li>
+							<li>Voir vos crédits de parrainage</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="col-md-offset-1 col-md-12 center-block text-center">
+					<a href="index.php?action=register" class="btn btn-primary" role="button">Commencer »</a> ou <a class="btn btn-facebook" href="index.php?action=facebookCreate"><i class="fa fa-facebook"></i> | S'enregistrer</a>
+				</div>
             </div>
         </div>
 		<script>

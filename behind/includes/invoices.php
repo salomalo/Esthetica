@@ -9,7 +9,9 @@ if(!$user->isLoggedIn()) {
 $invoices = new Invoice();
 $invoices->findAll($user->data()->id);
 
+$invoicesCount = 0;
 if($invoices->exists()) {
+	$invoicesCount = $invoices->data()->count();
 	$results = $invoices->data()->_results;
 	foreach($results as $key => $invoice) {
 		
@@ -29,7 +31,6 @@ if($invoices->exists()) {
 		}
 	}
 }
-$invoicesCount = $invoices->data()->count();
 
 ?>
 

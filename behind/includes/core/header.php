@@ -44,8 +44,11 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 </head>
 <body>
 	<div class="container">
-		<a href="index.php">
+		<a href="index.php" class="hidden-xs hidden-sm">
 			<img id="logo" src="images/ongles-trycia.png" alt="Ongles Trycia" />
+		</a>
+		<a href="index.php" class="hidden-md hidden-lg">
+			<img id="logo" src="images/ongles-trycia.png" alt="Ongles Trycia" style="max-height: 100px;" />
 		</a>
 		<div class="navbar navbar-default" role="navigation">
 			<div class="navbar-header">
