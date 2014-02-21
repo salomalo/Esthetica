@@ -104,7 +104,7 @@ class Licensing {
 			}
 			if (!$data) {
 				$localexpiry = date("Ymd",mktime(0,0,0,date("m"),date("d")-($localkeydays+$allowcheckfaildays),date("Y")));
-				if ($originalcheckdate>$localexpiry) {
+				if (@$originalcheckdate>$localexpiry) {
 					$results = $localkeyresults;
 				} else {
 					$results["status"] = "Invalid";
