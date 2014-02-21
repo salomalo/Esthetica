@@ -133,8 +133,8 @@ if($invoices->exists()) {
 							</div>
 							<div class="panel-body">
 								<h4 class="name">Pose d'ongles Trycia inc.</h4>
-								<p><span class="glyphicon glyphicon-barcode"></span> Facture #<?php echo $invoice->data()->id; ?></p>		
-								<p><span class="glyphicon glyphicon-calendar"></span> <?php echo substr($invoice->data()->date, 0, -9); ?></p>
+								<p style="margin: 0;"><span class="glyphicon glyphicon-barcode"></span> Facture #<?php echo $invoice->data()->id; ?></p>		
+								<p style="margin: 0;"><span class="glyphicon glyphicon-calendar"></span> <?php echo substr($invoice->data()->date, 0, -9); ?></p>
 							</div>
 						</div>
 					</div>
@@ -145,8 +145,8 @@ if($invoices->exists()) {
 							</div>
 							<div class="panel-body">
 								<h4 class="name"><?php echo escape($user->data()->firstName) . ' ' . escape($user->data()->lastName); ?></h4>
-								<p><span class="glyphicon glyphicon-earphone"></span> <?php echo escape(preg_replace("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/", "($1) $2-$3", $user->data()->phone)); ?></p>
-								<p><span class="glyphicon glyphicon-inbox"></span> <?php echo ($user->data()->email !== "") ? escape($user->data()->email) : '<em>Aucun courriel</em>'; ?></p>
+								<p style="margin: 0;"><span class="glyphicon glyphicon-earphone"></span> <?php echo escape(preg_replace("/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/", "($1) $2-$3", $user->data()->phone)); ?></p>
+								<p style="margin: 0;"><span class="glyphicon glyphicon-inbox"></span> <?php echo ($user->data()->email !== "") ? escape($user->data()->email) : '<em>Aucun courriel</em>'; ?></p>
 							</div>
 						</div>
 					</div>
@@ -173,11 +173,11 @@ if($invoices->exists()) {
 							<td>' . $line['sku'] . '</td>
 							<td>' . $line['description'] . '</td>
 							<td class="text-right">' . $line['qty'] . '</td>
-							<td class="text-right">$' . substr(money_format("%i", (float)$line['price']), 0, -4) . '</td>
-							<td class="text-right">$' . substr(money_format("%i", (float)$line['price']*(int)$line['qty']), 0, -4) . '</td>
+							<td class="text-right">$' . substr(money_format("%i", floatval($line['price'])), 0, -4) . '</td>
+							<td class="text-right">$' . substr(money_format("%i", floatval($line['price'])*intval($line['qty'])), 0, -4) . '</td>
 						</tr>
 							';
-							$subtotal += (float)$line['price']*(int)$line['qty'];
+							$subtotal += floatval($line['price'])*intval($line['qty']);
 						}
 						
 						if($invoice->data()->credit > 0) {
