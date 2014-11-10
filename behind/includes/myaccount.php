@@ -51,7 +51,6 @@ if($credits->exists()) {
         	<div class="col-md-12">            
             	<h1>Mon compte <small>Gestion de clientèle</small></h1>
 				<div class="list-group col-md-3">
-					<p class="text-center">NAVIGATION</p>
 					<a href="index.php?action=myaccount" class="list-group-item active"><span class="glyphicon glyphicon-info-sign"></span> Mes détails</a>
 					<a href="index.php?action=update" class="list-group-item"><span class="glyphicon glyphicon-cog"></span> Paramètres</a>
 					<p>&nbsp;</p>
