@@ -40,6 +40,7 @@ class User {
 	}
 	
 	public function update($fields = array()) {
+		echo $this->_data->id;
 		return $this->_db->update('users', $fields, array('id', '=', $this->_data->id));;
 	}
 	

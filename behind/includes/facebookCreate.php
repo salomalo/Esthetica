@@ -143,7 +143,7 @@ else {
 							<?php if(isset($login_url)) { ?>
                             <a class="btn btn-facebook" href="<?php echo $login_url; ?>"><i class="fa fa-facebook"></i> | Connexion</a>
 							<?php } else { ?>
-							<img src="https://graph.facebook.com/<?php echo $user_id; ?>/picture" class="img-rounded">&nbsp;
+							<img src="https://graph.facebook.com/<?php echo Session::get('facebook_id'); ?>/picture" class="img-rounded">&nbsp;
                             <a class="btn btn-facebook" href="<?php echo $facebook->getLogoutUrl(array('next' => 'http://onglestrycia.godevz.com/index.php?action=facebookCreate&destroy=1')); ?>"><i class="fa fa-facebook"></i> | Déconnexion</a>
 							<?php } ?>
                         </div>
@@ -159,7 +159,7 @@ else {
 					<div id="genderGroup" class="form-group">
                     <label for="inputGender" class="col-lg-3 col-lg-offset-1 control-label">Sexe</label>
                         <div class="col-lg-3">
-							<p class="form-control-static"><?php echo (Session::get('gender') == 1 ? 'Homme <img src="images/male.png" alt="Homme" />' : 'Femme <img src="images/female.png" alt="Femme" />'); ?></p>
+							<p class="form-control-static"><?php echo (Session::get('gender') == 1 ? 'Homme <i class="fa fa-male"></i>' : 'Femme <i class="fa fa-female"></i>'); ?></p>
                         </div>
                     </div>
 					<div id="firstNameGroup" class="form-group">
