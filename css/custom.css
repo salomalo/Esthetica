@@ -96,10 +96,6 @@ span.menu-text {
 #legend tr:nth-child(2) td {
 	width: 33.333333333%;
 }
-table.stats {
-	margin-top: 0px;
-	width: 100%;
-}
 div .navbar.navbar-default {
 	margin-bottom: 20px;
 }
@@ -119,4 +115,21 @@ div.form-group.has-error div div.checkbox {
 		display: none;
 		visibility: hidden;
 	}
+}
+div.panel.panel-stats {
+	min-height: 350px;
+}
+ul.stats.list-unstyled {
+	margin-top: 10px;
+	width: 100%;
+}
+ul.stats.list-unstyled li:not(.data) {
+	font-weight: bold;
+}
+ul.stats.list-unstyled li.data {
+	padding-left: 20px;
+}
+img.barcode {
+	position: absolute;
+	clip: rect(10px,180px,35px,20px);
 }

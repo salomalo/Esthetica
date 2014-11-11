@@ -143,7 +143,7 @@ else {
 							<?php if(isset($login_url)) { ?>
                             <a class="btn btn-facebook" href="<?php echo $login_url; ?>"><i class="fa fa-facebook"></i> | Connexion</a>
 							<?php } else { ?>
-							<img src="https://graph.facebook.com/<?php echo $user_id; ?>/picture" class="img-rounded">&nbsp;
+							<img src="https://graph.facebook.com/<?php echo Session::get('facebook_id'); ?>/picture" class="img-rounded">&nbsp;
                             <a class="btn btn-facebook" href="<?php echo $facebook->getLogoutUrl(array('next' => 'http://onglestrycia.godevz.com/index.php?action=facebookCreate&destroy=1')); ?>"><i class="fa fa-facebook"></i> | Déconnexion</a>
 							<?php } ?>
                         </div>
