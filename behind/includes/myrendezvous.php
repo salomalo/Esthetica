@@ -1,33 +1,33 @@
 <?php
-if	(!$user->isLoggedIn())	{
-				Redirect::to('login');
+if (!$user->isLoggedIn()) {
+    Redirect::to('login');
 }
 
 /* $rdv1 = RendezVous::create(array(
-	 'user_id' => $user->data()->id,
-	 'startDate' => date('Y-m-d G:i:s'),
-	 'employeeId' => $user->data()->estheticienId,
-	 'data' => json_encode(array())
-	 ));
-	 print_r($rdv1); */
+  'user_id' => $user->data()->id,
+  'startDate' => date('Y-m-d G:i:s'),
+  'employeeId' => $user->data()->estheticienId,
+  'data' => json_encode(array())
+  ));
+  print_r($rdv1); */
 ?>
 
 <script type="text/javascript">
-				$(document).ready(function (e) {
-								$(document).attr('title', 'Mes rendez-vous - Esthética');
+    $(document).ready(function (e) {
+        $(document).attr('title', 'Mes rendez-vous - Esthética');
 
-								$('a.cancel-btn[data-toggle="confirmation"]').confirmation({
-												title: "Êtes-vous certain<?php	echo	($user->data()->gender	==	1	?	''	:	'e');	?>?",
-												container: 'body'
-								});
-				});
+        $('a.cancel-btn[data-toggle="confirmation"]').confirmation({
+            title: "Êtes-vous certain<?php echo ($user->data()->gender == 1 ? '' : 'e'); ?>?",
+            container: 'body'
+        });
+    });
 </script>
 <div class="col-md-12">
     <h1>Mon compte <small>Gestion de clientèle</small></h1>
     <div class="list-group col-md-3">
-								<?php
-								include	'back-sidebar.php';
-								?>
+        <?php
+        include 'back-sidebar.php';
+        ?>
     </div>
 
     <div class="tab-content col-md-9">
@@ -49,50 +49,50 @@ if	(!$user->isLoggedIn())	{
                     </tr>
                 </thead>
                 <tbody>
-																				<?php
-																				if	(!$rendezvous->exists())	{
-																								echo	'
+                    <?php
+                    if (!$rendezvous->exists()) {
+                        echo '
 								<tr>
 									<td colspan="4">Aucun rendez-vous dans votre compte.</td>
 								</tr>';
-																				}	else	{
-																								$token	=	Token::generate();
+                    } else {
+                        $token = Token::generate();
 
-																								foreach	($rendezvousResults	as	$key	=>	$currentRendezvous)	{
-																												$rendezvousResults[$key]->passed	=	false;
-																												if	(strtotime($currentRendezvous->startDate)	<	time())	{
-																																$rendezvousResults[$key]->passed	=	true;
-																												}
+                        foreach ($rendezvousResults as $key => $currentRendezvous) {
+                            $rendezvousResults[$key]->passed = false;
+                            if (strtotime($currentRendezvous->startDate) < time()) {
+                                $rendezvousResults[$key]->passed = true;
+                            }
 
-																												/**
-																													* Confirmation:
-																													*   0 means awaiting approval from employees
-																													*   1 means approved
-																													*/
-																												echo	'
-								<tr'	.	($currentRendezvous->passed	?	' class="danger"'	:	'')	.	''	.	(!$currentRendezvous->confirmed	?	' class="warning"'	:	' class="success"')	.	'>
-									<td><i class="fa fa-fw fa-clock-o"></i> '	.	utf8_encode(strftime('%e %b %y',	strtotime($currentRendezvous->startDate)))	.	' à '	.	strftime('%H:%M',	strtotime($currentRendezvous->startDate))	.	'</td>
-									<td>'	.	implode('<br />',	json_decode($currentRendezvous->services))	.	'</td>
-                                                                        <td><a href="mailto:'	.	escape($currentRendezvous->email)	.	'">'	.	($currentRendezvous->gender	==	1	?	'<i class="fa fa-lg fa-male"></i>'	:	'<i class="fa fa-lg fa-female"></i>')	.	' '	.	escape($currentRendezvous->firstName)	.	' '	.	escape($currentRendezvous->lastName)	.	'</a></td>
+                            /**
+                             * Confirmation:
+                             *   0 means awaiting approval from employees
+                             *   1 means approved 
+                             */
+                            echo '
+								<tr' . ($currentRendezvous->passed ? ' class="danger"' : '') . '' . (!$currentRendezvous->confirmed ? ' class="warning"' : ' class="success"') . '>
+									<td><i class="fa fa-fw fa-clock-o"></i> ' . utf8_encode(strftime('%e %b %y', strtotime($currentRendezvous->startDate))) . ' à ' . strftime('%H:%M', strtotime($currentRendezvous->startDate)) . '</td>
+									<td>' . implode('<br />', json_decode($currentRendezvous->services)) . '</td>
+                                                                        <td><a href="mailto:' . escape($currentRendezvous->email) . '">' . ($currentRendezvous->gender == 1 ? '<i class="fa fa-lg fa-male"></i>' : '<i class="fa fa-lg fa-female"></i>') . ' ' . escape($currentRendezvous->firstName) . ' ' . escape($currentRendezvous->lastName) . '</a></td>
                                                                         <td><div class="btn-group btn-group-justified">';
-																												if	(!$currentRendezvous->passed)	{
-																																echo	'
+                            if (!$currentRendezvous->passed) {
+                                echo '
 
-                                                                            <a href="index.php?action=rendezvous&id='	.	$currentRendezvous->id	.	'&edit=1&token='	.	$token	.	'" class="btn btn-sm btn-primary"><i class="fa fa-fw fa-cog"></i> Modifier</a>
-                                                                            <a data-href="index.php?action=rendezvous&id='	.	$currentRendezvous->id	.	'&cancel=1&token='	.	$token	.	'" class="btn btn-sm btn-danger cancel-btn" data-toggle="confirmation"><i class="fa fa-fw fa-times"></i> Annuler</a>'
-																																.	'                                     </td>';
-																												}	else	{
-																																echo	'
+                                                                            <a href="index.php?action=rendezvous&id=' . $currentRendezvous->id . '&edit=1&token=' . $token . '" class="btn btn-sm btn-primary"><i class="fa fa-fw fa-cog"></i> Modifier</a>
+                                                                            <a data-href="index.php?action=rendezvous&id=' . $currentRendezvous->id . '&cancel=1&token=' . $token . '" class="btn btn-sm btn-danger cancel-btn" data-toggle="confirmation"><i class="fa fa-fw fa-times"></i> Annuler</a>'
+                                . '                                     </td>';
+                            } else {
+                                echo '
                                                                             <a class="btn btn-sm btn-primary disabled"><i class="fa fa-fw fa-cog"></i> Modifier</a>
                                                                             <a class="btn btn-sm btn-danger disabled"><i class="fa fa-fw fa-times"></i> Annuler</a>
                                                                         </td>';
-																												}
-																												echo	'
+                            }
+                            echo '
 									</div></td>
                                                                 </tr>';
-																								}
-																				}
-																				?>
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
             <div class="row center-block" style="width: 75%">

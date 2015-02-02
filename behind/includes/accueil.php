@@ -6,7 +6,7 @@
         <p class="lead">Lorsque vous référez nos services à vos amis, vous aurez droit à une carte cadeau de 25$<sup>*</sup> puisque vous nous référez un nouveau client!</p>
         <p><small>* Note de crédit appliquée au compte.</small></p>
         <p class="hidden-xs hidden-sm"><a class="btn btn-lg btn-success" href="index.php?action=rendezvous" role="button"><span class="fa fa-gift"></span> Prendre rendez-vous</a></p>
-        <p class="hidden-md hidden-lg"><a class="btn btn-lg btn-success" href="index.php?action=myrdv" role="button"><span class="fa fa-gift"></span> Prendre rendez-vous</a></p>
+        <p class="hidden-md hidden-lg"><a class="btn btn-lg btn-success" href="index.php?action=rendezvous" role="button"><span class="fa fa-gift"></span> Prendre rendez-vous</a></p>
     </div>
 </div>
 <div class="container">

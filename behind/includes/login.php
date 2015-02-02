@@ -1,62 +1,62 @@
 <?php
-$javascript	=	'';
+$javascript = '';
 
-if	($user->isLoggedIn())	{
-				Redirect::to('myaccount');
+if ($user->isLoggedIn()) {
+    Redirect::to('myaccount');
 }
 
-$rdv	=	$_GET['rdv'];
-if	(Input::exists())	{
-				if	(Token::check(Input::get('token')))	{
-								$inputUserName	=	Input::get('inputUserName');
-								$inputPassword	=	Input::get('inputPassword');
-								if	(!empty($inputPassword)	&&	!empty($inputPassword))	{
+$rdv = Input::get('rdv');
+if (Input::exists()) {
+    if (Token::check(Input::get('token'))) {
+        $inputUserName = Input::get('inputUserName');
+        $inputPassword = Input::get('inputPassword');
+        if (!empty($inputPassword) && !empty($inputPassword)) {
 
-												$remember	=	(Input::get('remember')	===	'on')	?	true	:	false;
-												$login	=	$user->login(Input::get('inputUserName'),	Input::get('inputPassword'),	$remember);
+            $remember = (Input::get('remember') === 'on') ? true : false;
+            $login = $user->login(Input::get('inputUserName'), Input::get('inputPassword'), $remember);
 
-												if	($login)	{
-																$user->update(array('status'	=>	'Actif'));
-																Session::flash('flash',	array('status'	=>	'success',	'message'	=>	'<strong>Succès!</strong> Bienvenue '	.	$user->data()->firstName	.	', vous vous êtes connecté à votre compte avec succès.'));
+            if ($login) {
+                $user->update(array('status' => 'Actif'));
+                Session::flash('flash', array('status' => 'success', 'message' => '<strong>Succès!</strong> Bienvenue ' . $user->data()->firstName . ', vous vous êtes connecté à votre compte avec succès.'));
 
-																if	(isset($rdv))	{
-																				Redirect::to('rendezvous');
-																}
-																Redirect::to('myaccount');
-												}	else	{
-																$errors	=	'<div class="alert alert-danger"><strong>Oups!</strong> Les informations ne sont pas correctes. Veuillez réessayer.</div>';
-																$javascript	.=	'$(\'#groupUserName\').addClass(\'has-error\').delay(500).effect("bounce"); ';
-																$javascript	.=	'$(\'#groupPassword\').addClass(\'has-error\').delay(500).effect("bounce"); ';
-												}
-								}	else	{
-												$errors	=	'<div class="alert alert-danger"><strong>Oups!</strong> Veuillez entrer vos informations complètes pour la connexion.</div>';
-												$javascript	.=	'$(\'#groupUserName\').addClass(\'has-error\').delay(500).effect("bounce"); ';
-												$javascript	.=	'$(\'#groupPassword\').addClass(\'has-error\').delay(500).effect("bounce"); ';
-								}
-				}	else	{
-								$errors	=	'<div class="alert alert-danger"><strong>Oups!</strong> Assurez-vous de soumettre le formulaire avec le bouton Continuer.</div>';
-				}
+                if (!empty($rdv)) {
+                    Redirect::to('rendezvous');
+                }
+                Redirect::to('myaccount');
+            } else {
+                $errors = '<div class="alert alert-danger"><strong>Oups!</strong> Les informations ne sont pas correctes. Veuillez réessayer.</div>';
+                $javascript .= '$(\'#groupUserName\').addClass(\'has-error\').delay(500).effect("bounce"); ';
+                $javascript .= '$(\'#groupPassword\').addClass(\'has-error\').delay(500).effect("bounce"); ';
+            }
+        } else {
+            $errors = '<div class="alert alert-danger"><strong>Oups!</strong> Veuillez entrer vos informations complètes pour la connexion.</div>';
+            $javascript .= '$(\'#groupUserName\').addClass(\'has-error\').delay(500).effect("bounce"); ';
+            $javascript .= '$(\'#groupPassword\').addClass(\'has-error\').delay(500).effect("bounce"); ';
+        }
+    } else {
+        $errors = '<div class="alert alert-danger"><strong>Oups!</strong> Assurez-vous de soumettre le formulaire avec le bouton Continuer.</div>';
+    }
 }
 ?>
 <script type="text/javascript">
-				$(document).ready(function (e) {
-								$(document).attr('title', 'Connexion - Esthética');
-				});
+    $(document).ready(function (e) {
+        $(document).attr('title', 'Connexion - Esthética');
+    });
 </script>
 <div class="row">
     <div class="col-md-offset-1 col-md-5">
         <h1>Connexion</h1>
         <p>Utilisez vos informations personnelles pour vous connecter à votre compte.</p>
-								<?php	echo	(empty($errors))	?	''	:	$errors;	?>
+        <?php echo (empty($errors)) ? '' : $errors; ?>
         <form class="form-horizontal" action="index.php?action=login<?php
-								if	(isset($rdv))	{
-												echo	'&rdv';
-								}
-								?>" method="post" role="form">
+        if (!empty($rdv)) {
+            echo '&rdv=1';
+        }
+        ?>" method="post" role="form">
             <div class="form-group" id="groupUserName">
                 <label for="inputUserName" class="col-md-4 control-label">Nom d'utilisateur</label>
                 <div class="col-md-8">
-                    <input type="text" class="form-control" name="inputUserName" placeholder="Nom d'utilisateur" value="<?php	echo	escape(Input::get('inputUserName'));	?>">
+                    <input type="text" class="form-control" name="inputUserName" placeholder="Nom d'utilisateur" value="<?php echo escape(Input::get('inputUserName')); ?>">
                 </div>
             </div>
             <div class="form-group" id="groupPassword">
@@ -76,13 +76,13 @@ if	(Input::exists())	{
             </div>
             <div class="form-group">
                 <div class="col-md-offset-1 col-md-11 center-block text-center">
-                    <input type="hidden" name="token" value="<?php	echo	Token::generate();	?>" />
+                    <input type="hidden" name="token" value="<?php echo Token::generate(); ?>" />
                     <button type="submit" class="btn btn-primary">Connexion</button> ou
                     <a class="btn btn-facebook" href="index.php?action=facebookLogin<?php
-																				if	(isset($rdv))	{
-																								echo	'&rdv';
-																				}
-																				?>"><i class="fa fa-facebook"></i> | Se connecter</a>
+                    if (isset($rdv)) {
+                        echo '&rdv';
+                    }
+                    ?>"><i class="fa fa-facebook"></i> | Se connecter</a>
                 </div>
             </div>
         </form>
@@ -106,7 +106,7 @@ if	(Input::exists())	{
     </div>
 </div>
 <script>
-				$(this).ready(function () {
-<?php	echo	$javascript;	?>
-				});
+    $(this).ready(function () {
+<?php echo $javascript; ?>
+    });
 </script>
